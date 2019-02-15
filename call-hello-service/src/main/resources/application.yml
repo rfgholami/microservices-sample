@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: call-hello-service
+server:
+  port: 0
+
+  ribbon:
+    eureka:
+      enabled: true
+#    listOfServers: localhost:9090,localhost:9091,localhost:9092
+    ServerListRefreshInterval: 1000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${registry.host:localhost}:${registry.port:8761}/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+    hostname: localhost
+    preferIpAddress: false

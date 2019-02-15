@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: ${springboot.app.name:eureka-serviceregistry}
+
+server:
+  port: ${server-port:8761}
+eureka:
+  instance:
+    hostname: ${springboot.app.name:eureka-serviceregistry}
+
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${registry.host:localhost}:${server.port}/eureka/
+    healthcheck:
+      enabled: true
