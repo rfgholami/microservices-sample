@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: monitor-dashboard
+
+server:
+  port: 7979
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${registry.host:localhost}:${registry.port:8761}/eureka/
+
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+    hostname: localhost
+    preferIpAddress: false
+
+
+
