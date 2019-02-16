@@ -21,3 +21,28 @@ eureka:
     leaseExpirationDurationInSeconds: 2
     hostname: localhost
     preferIpAddress: false
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream, info, health
+      base-path: /actuator
+
+
+
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: hystrix.stream, info, health
+#      base-path: /actuator
+#      cors:
+#        allowed-origins: true
+#
+#    health:
+#      enabled: true
+#      show-details: always
+#    enabled-by-default: false

@@ -1,8 +1,8 @@
 spring:
   application:
-    name: saying-hello-service
+    name: turbine-application
 server:
-  port: 0
+  port: 8989
 
 eureka:
   client:
@@ -14,5 +14,11 @@ eureka:
     leaseExpirationDurationInSeconds: 2
     hostname: localhost
     preferIpAddress: false
+
+turbine:
+  appConfig: call-hello-service
+  clusterNameExpression: new String('default')
+  instanceUrlSuffix:
+    default: actuator/hystrix.stream
 
 
