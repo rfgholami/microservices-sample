@@ -1,0 +1,23 @@
+server.port: 9411
+
+#spring.rabbitmq.host: localhost
+#spring.rabbitmq.port: 5672
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${registry.host:localhost}:${registry.port:8761}/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+    hostname: localhost
+    preferIpAddress: false
+
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.cloud.sleuth.instrument.messaging.MessagingSpanExtractor: ERROR
+    org.springframework.cloud.sleuth.util.ExceptionUtils: ERROR

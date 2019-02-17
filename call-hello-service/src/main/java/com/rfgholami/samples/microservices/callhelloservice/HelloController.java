@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,6 +42,18 @@ public class HelloController {
 
         String randomString = this.restTemplate.getForObject("http://saying-hello-service/hello", String.class);
         return "Server Response :: " + randomString + " :: " + s;
+    }
+
+
+    @GetMapping("/hello2")
+    public String hello2() {
+
+
+        String response = restTemplate.exchange("http://second-saying-hello-service/hello", HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
+        }).getBody();
+
+
+        return "Server Response :: " + response;
     }
 
 

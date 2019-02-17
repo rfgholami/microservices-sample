@@ -29,6 +29,7 @@
         <module>saying-hello-service</module>
         <module>second-saying-hello-service</module>
         <module>turbine-application</module>
+        <module>zipkin-stream-server</module>
 
 
 
