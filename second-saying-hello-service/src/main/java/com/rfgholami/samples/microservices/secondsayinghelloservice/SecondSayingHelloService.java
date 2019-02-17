@@ -1,4 +1,4 @@
-package com.rfgholami.samples.microservices.callhelloservice;
+package com.rfgholami.samples.microservices.secondsayinghelloservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

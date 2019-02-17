@@ -1,4 +1,4 @@
-package com.rfgholami.samples.microservices.callhelloservice;
+package com.rfgholami.samples.microservices.secondsayinghelloservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

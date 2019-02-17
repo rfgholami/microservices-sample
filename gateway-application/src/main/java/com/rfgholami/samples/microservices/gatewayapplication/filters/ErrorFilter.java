@@ -1,4 +1,4 @@
-package com.rfgholami.samples.microservices.callhelloservice.filters;
+package com.rfgholami.samples.microservices.gatewayapplication.filters;
 
 import com.netflix.zuul.ZuulFilter;
 

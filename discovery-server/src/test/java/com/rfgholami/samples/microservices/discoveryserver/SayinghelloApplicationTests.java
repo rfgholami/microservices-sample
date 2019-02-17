@@ -1,4 +1,4 @@
-package com.rfgholami.samples.microservices.callhelloservice;
+package com.rfgholami.samples.microservices.discoveryserver;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

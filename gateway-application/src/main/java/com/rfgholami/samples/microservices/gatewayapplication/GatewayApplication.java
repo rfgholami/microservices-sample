@@ -1,9 +1,10 @@
-package com.rfgholami.samples.microservices.callhelloservice;
+package com.rfgholami.samples.microservices.gatewayapplication;
 
-import com.rfgholami.samples.microservices.callhelloservice.filters.ErrorFilter;
-import com.rfgholami.samples.microservices.callhelloservice.filters.PostFilter;
-import com.rfgholami.samples.microservices.callhelloservice.filters.PreFilter;
-import com.rfgholami.samples.microservices.callhelloservice.filters.RouteFilter;
+
+import com.rfgholami.samples.microservices.gatewayapplication.filters.ErrorFilter;
+import com.rfgholami.samples.microservices.gatewayapplication.filters.PostFilter;
+import com.rfgholami.samples.microservices.gatewayapplication.filters.PreFilter;
+import com.rfgholami.samples.microservices.gatewayapplication.filters.RouteFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
