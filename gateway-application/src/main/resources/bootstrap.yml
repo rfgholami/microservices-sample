@@ -17,3 +17,11 @@ spring:
         enabled: false
       uri: http://localhost:8888
 
+---
+spring:
+  profiles: docker
+  cloud:
+    config:
+      discovery:
+        enabled: false
+      uri: http://config-server:8888

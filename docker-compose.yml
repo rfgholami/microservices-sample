@@ -1,0 +1,31 @@
+version: "3"
+services:
+  call-hello-service:
+    image: call-hello-service:v1
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+  config-server:
+    image: config-server:v1
+    ports:
+      - "8888:8888"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+  discovery-server:
+    image: discovery-server:v1
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+
+  gateway-application:
+    image: gateway-application:v1
+    ports:
+      - "8765:8765"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+  saying-hello-service:
+    image: saying-hello-service:v1
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker

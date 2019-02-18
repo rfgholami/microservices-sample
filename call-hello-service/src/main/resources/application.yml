@@ -30,7 +30,10 @@ management:
         include: hystrix.stream, info, health
       base-path: /actuator
 
-
+---
+spring.profiles: docker
+eureka.instance.preferIpAddress: true
+eureka.client.serviceUrl.defaultZone: http://discovery-server:8761/eureka/
 
 
 #management:
