@@ -29,3 +29,28 @@ services:
     image: saying-hello-service:v1
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+
+  monitor-dashboard:
+    image: monitor-dashboard:v1
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - "7979:7979"
+  second-saying-hello-service:
+    image: second-saying-hello-service:v1
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - "9875:9875"
+  turbine-application:
+    image: turbine-application:v1
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - "8989:8989"
+  zipkin-stream-server:
+    image: zipkin-stream-server:v1
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - "9411:9411"
