@@ -1,9 +1,12 @@
+info:
+  component: second saying hello service
+
 spring:
   application:
     name: second-saying-hello-service
   cloud:
     config:
-      failFast: true
+      failFast: false
       retry:
         initialInterval: 3000
         multiplier: 1.3
@@ -13,24 +16,8 @@ spring:
         serviceId: config-server
         enabled: false
       uri: http://localhost:8888
-server:
-  port: 9875
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://${registry.host:localhost}:${registry.port:8761}/eureka/
-
-  instance:
-    leaseRenewalIntervalInSeconds: 1
-    leaseExpirationDurationInSeconds: 2
-    hostname: localhost
-    preferIpAddress: false
-
 
 ---
-
-
 spring:
   profiles: docker
   cloud:
@@ -39,5 +26,5 @@ spring:
         enabled: false
       uri: http://config-server:8888
 
-eureka.instance.preferIpAddress: true
-eureka.client.serviceUrl.defaultZone: http://discovery-server:8761/eureka/
+
+

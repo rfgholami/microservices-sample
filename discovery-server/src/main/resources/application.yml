@@ -1,7 +1,6 @@
 spring:
   application:
     name: ${springboot.app.name:eureka-serviceregistry}
-
 server:
   port: ${server-port:8761}
 eureka:
@@ -15,3 +14,8 @@ eureka:
       defaultZone: http://${registry.host:localhost}:${server.port}/eureka/
     healthcheck:
       enabled: true
+
+
+
+  server:
+    peer-node-read-timeout-ms: 10000000

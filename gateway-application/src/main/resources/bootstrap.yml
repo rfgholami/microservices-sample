@@ -6,7 +6,7 @@ spring:
     name: gateway-application
   cloud:
     config:
-      failFast: true
+      failFast: false
       retry:
         initialInterval: 3000
         multiplier: 1.3
