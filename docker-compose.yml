@@ -4,6 +4,8 @@ services:
     image: call-hello-service:v1
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - discovery-server
   config-server:
     image: config-server:v1
     ports:
@@ -21,11 +23,11 @@ services:
     deploy:
       placement:
         constraints: [node.role == manager]
-
   gateway-application:
     image: gateway-application:v1
     depends_on:
       - config-server
+      - discovery-server
     ports:
       - "8765:8765"
     environment:
@@ -39,6 +41,7 @@ services:
     image: first-hello-service:v1
     depends_on:
       - config-server
+      - discovery-server
     deploy:
       placement:
         constraints: [node.role == worker]
@@ -51,17 +54,19 @@ services:
           memory: 150M
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-
   monitor-dashboard:
     image: monitor-dashboard:v1
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - discovery-server
     ports:
       - "7979:7979"
   second-hello-service:
     image: second-hello-service:v1
     depends_on:
       - config-server
+      - discovery-server
     deploy:
       placement:
         constraints: [node.role == worker]
@@ -77,17 +82,20 @@ services:
       - "9875:9875"
   turbine-application:
     image: turbine-application:v1
+    depends_on:
+      - discovery-server
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     ports:
       - "8989:8989"
   zipkin-stream-server:
     image: zipkin-stream-server:v1
+    depends_on:
+      - discovery-server
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     ports:
       - "9411:9411"
-
   visualizer:
     image: dockersamples/visualizer:stable
     ports:
