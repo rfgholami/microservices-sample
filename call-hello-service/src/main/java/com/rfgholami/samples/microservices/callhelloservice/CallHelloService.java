@@ -9,7 +9,7 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
 @EnableDiscoveryClient
 @SpringBootApplication
 @EnableCircuitBreaker
-@RibbonClient(name = "saying-hello-service", configuration = RibbonConfiguration.class)
+@RibbonClient(name = "first-hello-service", configuration = RibbonConfiguration.class)
 public class CallHelloService {
 
     public static void main(String[] args) {

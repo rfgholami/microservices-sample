@@ -1,12 +1,12 @@
 info:
-  component: second saying hello service
+  component: second hello service
 
 spring:
   application:
-    name: second-saying-hello-service
+    name: second-hello-service
   cloud:
     config:
-      failFast: false
+      failFast: true
       retry:
         initialInterval: 3000
         multiplier: 1.3

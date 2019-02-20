@@ -15,7 +15,5 @@ eureka:
     healthcheck:
       enabled: true
 
-
-
   server:
     peer-node-read-timeout-ms: 10000000

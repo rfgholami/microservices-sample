@@ -8,7 +8,6 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 @SpringBootApplication
 @EnableHystrixDashboard
 @EnableDiscoveryClient
-
 public class MonitorDashboardApplication {
 
 

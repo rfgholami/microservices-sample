@@ -8,6 +8,8 @@ services:
     image: config-server:v1
     ports:
       - "8888:8888"
+    depends_on:
+      - discovery-server
     environment:
       - SPRING_PROFILES_ACTIVE=docker
   discovery-server:
@@ -16,17 +18,37 @@ services:
       - "8761:8761"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-
+    deploy:
+      placement:
+        constraints: [node.role == manager]
 
   gateway-application:
     image: gateway-application:v1
+    depends_on:
+      - config-server
     ports:
       - "8765:8765"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-
-  saying-hello-service:
-    image: saying-hello-service:v1
+    deploy:
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == manager]
+  first-hello-service:
+    image: first-hello-service:v1
+    depends_on:
+      - config-server
+    deploy:
+      placement:
+        constraints: [node.role == worker]
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 150M
     environment:
       - SPRING_PROFILES_ACTIVE=docker
 
@@ -36,8 +58,19 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     ports:
       - "7979:7979"
-  second-saying-hello-service:
-    image: second-saying-hello-service:v1
+  second-hello-service:
+    image: second-hello-service:v1
+    depends_on:
+      - config-server
+    deploy:
+      placement:
+        constraints: [node.role == worker]
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 150M
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     ports:
@@ -54,3 +87,13 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     ports:
       - "9411:9411"
+
+  visualizer:
+    image: dockersamples/visualizer:stable
+    ports:
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      placement:
+        constraints: [node.role == manager]

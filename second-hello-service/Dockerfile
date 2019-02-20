@@ -11,11 +11,11 @@ EXPOSE 9875
 
 
 # The application's jar file
-ARG JAR_FILE=target/second-saying-hello-service-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=target/second-hello-service-0.0.1-SNAPSHOT.jar
 
 # Add the application's jar to the container
-ADD ${JAR_FILE} second-saying-hello-service.jar
+ADD ${JAR_FILE} second-hello-service.jar
 
 # Run the jar file
-ENTRYPOINT ["java","-jar","/second-saying-hello-service.jar"]
+ENTRYPOINT ["java","-jar","/second-hello-service.jar"]
 

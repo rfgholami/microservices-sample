@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class HelloService {
 
-
     @HystrixCommand(fallbackMethod = "defaultRandomHello")
     public String randomHello() {
 
@@ -16,11 +15,11 @@ public class HelloService {
         }
 
 
-        return "randomHello";
+        return "Hello";
     }
 
 
     public String defaultRandomHello() {
-        return "Failed Random Hello";
+        return "Failed to Hello";
     }
 }

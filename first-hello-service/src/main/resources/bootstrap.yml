@@ -1,9 +1,9 @@
 info:
-  component: Edge server (based on Netflix Zuul)
+  component: first hello service
 
 spring:
   application:
-    name: gateway-application
+    name: first-hello-service
   cloud:
     config:
       failFast: true
@@ -25,3 +25,6 @@ spring:
       discovery:
         enabled: false
       uri: http://config-server:8888
+
+
+

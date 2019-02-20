@@ -1,4 +1,4 @@
-package com.rfgholami.samples.microservices.sayinghelloservice;
+package com.rfgholami.samples.microservices.firsthelloservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -19,10 +19,7 @@ public class HelloController {
     @GetMapping("/hello")
     public String backend() {
 
-        String serverPort = environment.getProperty("local.server.port");
-
-
-        return "Hello form Host Port : " + serverPort;
+        return "Hello form Host Port : " + environment.getProperty("local.server.port");
     }
 
 

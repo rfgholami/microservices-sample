@@ -34,24 +34,19 @@ public class HelloController {
         return new RestTemplate();
     }
 
-    @GetMapping("/hello")
-    public String hello() {
-
-        String s = loadBalancer.choose("saying-hello-service").getUri().toString();
-
-
-        String randomString = this.restTemplate.getForObject("http://saying-hello-service/hello", String.class);
-        return "Server Response :: " + randomString + " :: " + s;
+    @GetMapping("/first-hello")
+    public String firstHello() {
+        String hello = loadBalancer.choose("first-hello-service").getUri().toString();
+        String answer = this.restTemplate.getForObject("http://first-hello-service/hello", String.class);
+        return "Server Response :: " + answer + " :: " + hello;
     }
 
 
-    @GetMapping("/hello2")
-    public String hello2() {
+    @GetMapping("/second-hello")
+    public String secondHello() {
 
-
-        String response = restTemplate.exchange("http://second-saying-hello-service/hello", HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
+        String response = restTemplate.exchange("http://second-hello-service/hello", HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
         }).getBody();
-
 
         return "Server Response :: " + response;
     }

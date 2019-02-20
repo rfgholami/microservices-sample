@@ -10,10 +10,10 @@ VOLUME /tmp
 
 
 # The application's jar file
-ARG JAR_FILE=target/saying-hello-service-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=target/first-hello-service-0.0.1-SNAPSHOT.jar
 
 # Add the application's jar to the container
-ADD ${JAR_FILE} saying-hello-service.jar
+ADD ${JAR_FILE} first-hello-service.jar
 
 # Run the jar file
-ENTRYPOINT ["java","-jar","/saying-hello-service.jar"]
+ENTRYPOINT ["java","-jar","/first-hello-service.jar"]
