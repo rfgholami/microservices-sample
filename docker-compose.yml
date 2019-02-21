@@ -2,12 +2,18 @@ version: "3"
 services:
   call-hello-service:
     image: call-hello-service:v1
+    deploy:
+      placement:
+        constraints: [node.role == worker]
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
       - discovery-server
   config-server:
     image: config-server:v1
+    deploy:
+      placement:
+        constraints: [node.role == worker]
     ports:
       - "8888:8888"
     depends_on:
@@ -82,6 +88,9 @@ services:
       - "9875:9875"
   turbine-application:
     image: turbine-application:v1
+    deploy:
+      placement:
+        constraints: [node.role == worker]
     depends_on:
       - discovery-server
     environment:
@@ -90,12 +99,29 @@ services:
       - "8989:8989"
   zipkin-stream-server:
     image: zipkin-stream-server:v1
+    deploy:
+      placement:
+        constraints: [node.role == worker]
     depends_on:
       - discovery-server
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     ports:
       - "9411:9411"
+  auth-server:
+    image: auth-server:v1
+    depends_on:
+      - discovery-server
+      - config-server
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - "9999:9999"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+      restart_policy:
+        condition: on-failure
   visualizer:
     image: dockersamples/visualizer:stable
     ports:

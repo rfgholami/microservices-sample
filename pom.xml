@@ -30,6 +30,7 @@
         <module>second-hello-service</module>
         <module>turbine-application</module>
         <module>zipkin-stream-server</module>
+        <module>auth-server</module>
 
 
 
