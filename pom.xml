@@ -28,6 +28,7 @@
         <module>monitor-dashboard</module>
         <module>first-hello-service</module>
         <module>second-hello-service</module>
+        <module>second-call-hello-service</module>
         <module>turbine-application</module>
         <module>zipkin-stream-server</module>
         <module>auth-server</module>

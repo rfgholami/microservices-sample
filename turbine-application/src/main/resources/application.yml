@@ -16,7 +16,7 @@ eureka:
     preferIpAddress: false
 
 turbine:
-  appConfig: call-hello-service
+  appConfig: call-hello-service,second-call-hello-service
   clusterNameExpression: new String('default')
   instanceUrlSuffix:
     default: actuator/hystrix.stream
